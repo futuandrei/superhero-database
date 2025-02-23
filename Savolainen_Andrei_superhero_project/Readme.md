@@ -1,8 +1,8 @@
-# 🦸 Savolainen_Andrei Superhero Project
+# Savolainen_Andrei Superhero Project
 
-This project is a **full-stack superhero management system** built with **Node.js, Express, TypeScript, MariaDB, and a frontend using JavaScript & HTML**. It allows users to **create, read, update, and delete superheroes** via a REST API and a **Single Page Application (SPA)**.
+This project is a **full-stack superhero management system** built with **Node.js, Express, MariaDB, and a frontend using JavaScript & HTML**. It allows users to **create, read, update, and delete superheroes** via a REST API and a **Single Page Application (SPA)**.
 
-## **🚀 Features**
+## Features
 
 - **Superhero CRUD operations** (Create, Read, Update, Delete)
 - **RESTful API** using `Express.js`
@@ -12,27 +12,9 @@ This project is a **full-stack superhero management system** built with **Node.j
 - **Uses `nodemon` for live server reload**
 - **Routes structured with Express Router**
 
----
+## 🛠 Setup & Installation
 
-## **📂 Project Structure**
-
-Savolainen_Andrei_superhero_project/
-│── public/ # Frontend files (HTML, CSS, JS)
-│── src/
-│ ├── controllers/ # API controllers
-│ ├── routes/ # Express API routes
-│ ├── models/ # Database models
-│ ├── database.js # Database connection & queries
-│ ├── app.ts # Main Express application
-│── dist/ # Compiled TypeScript files
-│── Savolainen_Andrei_superhero_createStatements.sql # SQL setup
-│── package.json # Node dependencies & scripts
-│── tsconfig.json # TypeScript configuration
-│── README.md # Project documentation
-
-## **🛠 Setup & Installation**
-
-### **1️⃣ Clone the Repository**
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/superhero-project.git
