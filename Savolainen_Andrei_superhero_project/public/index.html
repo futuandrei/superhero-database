@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Superhero Database</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Superhero Database</h1>
+    <div class="form-container">
+      <h2>Add superhero</h2>
+      <form id="heroForm">
+        <input type="hidden" id="heroID" />
+        <!-- <input type="number" id="number" placeholder="Number" /> -->
+        <input type="text" id="name" placeholder="Name" />
+        <input type="number" id="year" placeholder="Year" />
+        <input type="text" id="superproperty" placeholder="superproperty" />
+        <input type="text" id="gear" placeholder="gear" />
+        <div class="button-row">
+          <button type="submit">Save</button>
+          <button type="button" id="clearSearchButton">Empty values</button>
+        </div>
+      </form>
+      <p id="errorMessage" style="color: red; display: none"></p>
+    </div>
+    <div class="button-rows">
+      <!-- <button onclick="fetchHeroes()">Load Superheroes</button> -->
+      <input class="search" type="text" id="search" placeholder="search" />
+    </div>
+    <div id="hero-list"></div>
+    <p id="errorMessage" style="color: red; display: none"></p>
+    <script defer src="script.js" defer></script>
+  </body>
+</html>

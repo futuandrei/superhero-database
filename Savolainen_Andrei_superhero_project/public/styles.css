@@ -1,0 +1,61 @@
+.form-container {
+  background-color: hsl(34, 78%, 91%);
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid hsl(34, 78%, 70%);
+  border-collapse: collapse;
+}
+
+#hero-list {
+  background-color: lightblue;
+}
+
+table {
+  width: 100%;
+  background-color: hsl(34, 78%, 91%);
+}
+
+th {
+  background-color: hsl(34, 78%, 80%);
+  text-align: left;
+}
+table,
+th,
+td {
+  border: 1px solid hsl(34, 78%, 70%);
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+button {
+  background-color: purple;
+  color: rgb(255, 225, 230);
+  border-style: none;
+  border-radius: 5px;
+  padding: 10px;
+  /* margin-top: 5px;
+  margin-bottom: 5px; */
+  cursor: pointer;
+}
+
+.button-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+input {
+  /* height: 34px; */
+  padding: 10px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+.search {
+  flex-grow: 1;
+  min-width: 0;
+}
