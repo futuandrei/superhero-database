@@ -8,21 +8,80 @@
   </head>
   <body>
     <h1>Superhero Database</h1>
-    <div class="form-container">
+
+    <div class="tabs">
+      <button id="addTab" class="active" onclick="switchTab('add')">
+        Add Superhero
+      </button>
+      <button id="updateTab" onclick="switchTab('update')">
+        Update Superhero
+      </button>
+    </div>
+    <!-- tab content add -->
+    <div id="addSection" class="tab-content">
       <h2>Add superhero</h2>
       <form id="heroForm">
         <input type="hidden" id="heroID" />
         <!-- <input type="number" id="number" placeholder="Number" /> -->
-        <input type="text" id="name" placeholder="Name" />
-        <input type="number" id="year" placeholder="Year" />
-        <input type="text" id="superproperty" placeholder="superproperty" />
-        <input type="text" id="gear" placeholder="gear" />
+        <div class="form-group">
+          <div>
+            <label>Name:</label>
+            <input type="text" id="name" placeholder="Name" />
+          </div>
+          <div>
+            <label>Year of Birth:</label>
+            <input type="number" id="year" placeholder="Year" />
+          </div>
+          <div>
+            <label>Superproperty:</label>
+            <input type="text" id="superproperty" placeholder="superproperty" />
+          </div>
+          <div>
+            <label>Gear:</label>
+            <input type="text" id="gear" placeholder="gear" />
+          </div>
+        </div>
         <div class="button-row">
-          <button type="submit">Save</button>
+          <button type="submit">Add superhero</button>
           <button type="button" id="clearSearchButton">Empty values</button>
         </div>
       </form>
       <p id="errorMessage" style="color: red; display: none"></p>
+    </div>
+    <!-- tab content udpate -->
+    <div id="updateSection" class="tab-content" style="display: none">
+      <h2>Update Superhero</h2>
+      <div class="select-superhero">
+        <label>Select Superhero to Update:</label>
+        <select id="heroSelect" onchange="populateHeroForm()">
+          <option value="">- Select Hero -</option>
+        </select>
+      </div>
+
+      <form id="updateHeroForm">
+        <input type="hidden" id="updateHeroID" />
+        <div class="form-group">
+          <div>
+            <label>Name:</label>
+            <input type="text" id="updateName" required />
+          </div>
+          <div>
+            <label>Year of Birth:</label>
+            <input type="number" id="updateYear" required />
+          </div>
+          <div>
+            <label>Superproperty:</label>
+            <input type="text" id="updateSuperproperty" required />
+          </div>
+          <div>
+            <label>Gear:</label>
+            <input type="text" id="updateGear" required />
+          </div>
+        </div>
+        <div class="button-row">
+          <button type="submit">Update</button>
+        </div>
+      </form>
     </div>
     <div class="button-rows">
       <!-- <button onclick="fetchHeroes()">Load Superheroes</button> -->

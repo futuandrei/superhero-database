@@ -40,8 +40,9 @@ app.post("/api/superheroes", async (req, res) => {
 });
 
 // Update a superhero
-app.put("/api/superheroes", async (req, res) => {
-    const { heroID, name, yearOfBirth, superproperty, gear } = req.body;
+app.put("/api/superheroes/:id", async (req, res) => {
+    const heroID = req.params.id;
+    const { name, yearOfBirth, superproperty, gear } = req.body;
     try {
         await db.updateHero(heroID, name, yearOfBirth, superproperty, gear);
         res.json({ message: "Hero updated successfully" });

@@ -6,6 +6,7 @@ async function fetchHeroes() {
     const response = await fetch(API_URL);
     superheroes = await response.json(); // Store data globally
     renderTable(superheroes); // Render table with the full dataset
+    loadHeroesIntoDropdown(); // Populate dropdown for updating
 }
 
 function renderTable(data) {
@@ -118,9 +119,90 @@ function applyFilter() {
     renderTable(filteredHeroes); // Render only the filtered results
 }
 
+function switchTab(tab) {
+    if (tab === 'add') {
+        document.getElementById("addSection").style.display = "block";
+        document.getElementById("updateSection").style.display = "none";
+        document.getElementById("addTab").classList.add("active");
+        document.getElementById("updateTab").classList.remove("active");
+    } else {
+        document.getElementById("addSection").style.display = "none";
+        document.getElementById("updateSection").style.display = "block";
+        document.getElementById("addTab").classList.remove("active");
+        document.getElementById("updateTab").classList.add("active");
+        loadHeroesIntoDropdown(); // Load heroes into dropdown when switching to update tab
+    }
+}
+
+function loadHeroesIntoDropdown() {
+    const select = document.getElementById("heroSelect");
+    select.innerHTML = '<option value="">-- Select Hero --</option>';
+
+    superheroes.forEach(hero => {
+        const option = document.createElement("option");
+        option.value = hero.heroID;
+        option.textContent = `${hero.name} (ID: ${hero.heroID})`;
+        select.appendChild(option);
+    });
+}
+
+function populateHeroForm() {
+    const heroID = document.getElementById("heroSelect").value;
+    if (!heroID) return;
+
+    const hero = superheroes.find(h => h.heroID === parseInt(heroID));
+    if (!hero) return;
+
+    // Populate the form with existing values
+    document.getElementById("updateHeroID").value = hero.heroID;
+    document.getElementById("updateName").value = hero.name;
+    document.getElementById("updateYear").value = hero.yearOfBirth;
+    document.getElementById("updateSuperproperty").value = hero.superproperty;
+    document.getElementById("updateGear").value = hero.gear;
+}
+
+async function updateSuperhero(e) {
+    e.preventDefault();
+
+    const heroID = document.getElementById("updateHeroID").value;
+    const name = document.getElementById("updateName").value.trim();
+    const yearOfBirth = parseInt(document.getElementById("updateYear").value);
+    const superproperty = document.getElementById("updateSuperproperty").value.trim();
+    const gear = document.getElementById("updateGear").value.trim();
+
+    if (!heroID || !name || isNaN(yearOfBirth) || !superproperty || !gear) {
+        alert("All fields are required.");
+        return;
+    }
+
+    const superhero = { name, yearOfBirth, superproperty, gear };
+
+    try {
+        console.log(`Updating superhero with ID: ${heroID}`);
+        console.log("Superhero data:", superhero);
+
+        const response = await fetch(`${API_URL}/${heroID}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(superhero)
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Failed to update superhero. Server response: ${errorText}`);
+        }
+
+        alert(`Superhero ID ${heroID} updated successfully!`);
+        await fetchHeroes(); // Refresh hero list
+        document.getElementById("updateHeroForm").reset(); // Clear form
+    } catch (err) {
+        console.error("Error updating superhero:", err);
+    }
+}
+
 // Event Listener for empty values
 document.getElementById('clearSearchButton').addEventListener('click', () => {
-    document.getElementById('number').value = '';
+    // document.getElementById('number').value = '';
     document.getElementById('name').value = '';
     document.getElementById('year').value = '';
     document.getElementById('superproperty').value = '';
@@ -132,6 +214,10 @@ document.getElementById('clearSearchButton').addEventListener('click', () => {
 // Event Listeners
 document.getElementById('heroForm').addEventListener('submit', addOrUpdateSuperhero);
 document.getElementById('search').addEventListener('input', applyFilter);
+
+// document.getElementById('heroForm').addEventListener('submit', addOrUpdateSuperhero);
+document.getElementById('updateHeroForm').addEventListener('submit', updateSuperhero);
+document.getElementById('heroSelect').addEventListener('change', populateHeroForm);
 
 
 // Initial fetch of superheroes

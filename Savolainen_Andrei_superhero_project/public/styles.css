@@ -1,4 +1,4 @@
-.form-container {
+.tab-content {
   background-color: hsl(34, 78%, 91%);
   padding: 15px;
   margin-bottom: 20px;
@@ -49,13 +49,104 @@ button {
 }
 
 input {
-  /* height: 34px; */
   padding: 10px;
   border-style: solid;
+  border-radius: 5px;
+}
+
+select {
+  padding: 10px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+/* Ensure spacing between label and input */
+.form-group div {
+  display: flex;
+  width: 95%;
+  flex-direction: column;
+  gap: 8px; /* Space between label and input */
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px;
   border-radius: 5px;
 }
 
 .search {
   flex-grow: 1;
   min-width: 0;
+}
+
+/* Style the tab container */
+.tabs {
+  display: flex;
+  /* border-bottom: 2px solid #ccc; */
+}
+
+/* Style the buttons (tabs) */
+.tabs button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: hsl(34, 78%, 91%); /* Default color */
+  transition: background 0.3s ease-in-out;
+  border-radius: 0;
+  color: black;
+}
+
+/* Make active tab blend with section background */
+.tabs button.active {
+  background: hsl(34, 78%, 91%); /* Same as Add/Update section background */
+  border-bottom: 4px solid hsl(34, 78%, 70%); /* Indicator */
+}
+
+/* Remove focus outline on click */
+.tabs button:focus {
+  outline: none;
+}
+
+/* Ensure tab content matches background */
+.tab-content {
+  background: hsl(34, 78%, 91%); /* Same background as the active tab */
+  padding: 20px;
+  /* border-radius: 0 0 5px 5px; */
+}
+
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px; /* Space between inputs */
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.select-superhero {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.select-superhero label {
+  font-weight: 600;
+}
+
+.select-superhero select {
+  background-color: white;
 }
