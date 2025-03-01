@@ -209,6 +209,7 @@ async function deleteAllHeroes() {
         if (response.ok) {
             console.log(result.message);
             // Optionally, update the UI to reflect the deletion
+            alert(`Heroes deleted successfully.`);
         } else {
             console.error(`Failed to delete all heroes: ${result.error}`);
         }

@@ -16,9 +16,6 @@ async function fetchHeroDetails() {
         const response = await fetch(`${API_URL}/${heroID}`);
         const hero = await response.json();
 
-        // console.log(hero[0].name);
-        // console.log(hero.superproperty);
-
         // Display hero details
         document.getElementById("hero-details").innerHTML = `
             <h2>Hero ID: ${hero[0].heroID}</h2>

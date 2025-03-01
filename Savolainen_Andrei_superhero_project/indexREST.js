@@ -63,18 +63,6 @@ app.delete("/api/superheroes/:id", async (req, res) => {
     }
 });
 
-// Delete all superheroes and reset auto-increment
-app.delete("/api/superheroes", async (req, res) => {
-    try {
-        console.log("Attempting to delete all heroes and reset auto-increment");
-        await db.deleteAllHeroes();
-        res.json({ message: "All heroes deleted and auto-increment reset successfully" });
-    } catch (err) {
-        console.error("Error deleting all heroes and resetting auto-increment", err);
-        res.status(500).json({ error: err.message });
-    }
-});
-
 app.get("/", (req, res) => {
     res.send("Welcome to the Superhero REST API. Use /api/superheroes to get data.");
 });
