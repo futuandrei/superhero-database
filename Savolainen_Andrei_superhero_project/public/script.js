@@ -200,6 +200,24 @@ async function updateSuperhero(e) {
     }
 }
 
+async function deleteAllHeroes() {
+    try {
+        const response = await fetch('http://localhost:4000/api/superheroes', {
+            method: 'DELETE'
+        });
+        const result = await response.json();
+        if (response.ok) {
+            console.log(result.message);
+            // Optionally, update the UI to reflect the deletion
+        } else {
+            console.error(`Failed to delete all heroes: ${result.error}`);
+        }
+        await fetchHeroes(); // Refresh hero list
+    } catch (error) {
+        console.error('Error deleting all heroes', error);
+    }
+}
+
 // Event Listener for empty values
 document.getElementById('clearSearchButton').addEventListener('click', () => {
     // document.getElementById('number').value = '';
@@ -218,6 +236,7 @@ document.getElementById('search').addEventListener('input', applyFilter);
 // document.getElementById('heroForm').addEventListener('submit', addOrUpdateSuperhero);
 document.getElementById('updateHeroForm').addEventListener('submit', updateSuperhero);
 document.getElementById('heroSelect').addEventListener('change', populateHeroForm);
+document.getElementById('deleteAllSuperheroes').addEventListener('click', () => { deleteAllHeroes(); });
 
 
 // Initial fetch of superheroes

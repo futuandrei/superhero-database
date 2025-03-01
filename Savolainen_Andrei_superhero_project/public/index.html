@@ -85,7 +85,10 @@
     </div>
     <div class="button-rows">
       <!-- <button onclick="fetchHeroes()">Load Superheroes</button> -->
-      <input class="search" type="text" id="search" placeholder="search" />
+      <div class="search-container">
+        <input class="search" type="text" id="search" placeholder="search with heroID or any other keyword" />
+        <button type="button" id="deleteAllSuperheroes">Delete all superheroes</button>
+      </div>
     </div>
     <div id="hero-list"></div>
     <p id="errorMessage" style="color: red; display: none"></p>

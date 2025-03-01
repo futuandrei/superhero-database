@@ -23,6 +23,11 @@ async function queryDatabase(query, params = []) {
     }
 }
 
+async function deleteAllHeroes() {
+    await queryDatabase(queries.deleteAllHeroes);
+    await queryDatabase(queries.resetAutoIncrement);
+}
+
 // Export CRUD functions
 module.exports = {
     getAllHeroes: () => queryDatabase(queries.getAllHeroes),
@@ -32,4 +37,6 @@ module.exports = {
     updateHero: (id, name, yearOfBirth, superproperty, gear) =>
         queryDatabase(queries.updateHero, [name, yearOfBirth, superproperty, gear, id]),
     deleteHero: (id) => queryDatabase(queries.deleteHero, [id]),
+    deleteAllHeroes: () => deleteAllHeroes(), // Ensure this function is exported
+
 };
